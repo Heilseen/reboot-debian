@@ -13,13 +13,13 @@ jobs:
     - name: Descargar el codigo fuente
       uses: actions/checkout@v4
       with:
-        submodules: recursive # <--- ¡ESTA ES LA LÍNEA MÁGICA NUEVA!
+        submodules: recursive
 
     - name: Configurar MSBuild
       uses: microsoft/setup-msbuild@v2
 
     - name: Compilar el proyecto
-      run: msbuild **/*.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild ProjectReboot.sln /p:Configuration=Release /p:Platform=x64
 
     - name: Entregar el archivo final
       uses: actions/upload-artifact@v4
