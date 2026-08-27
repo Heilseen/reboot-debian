@@ -1,0 +1,27 @@
+name: Fabricar Servidor DLL
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Descargar el codigo fuente
+      uses: actions/checkout@v4
+
+    - name: Configurar MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Compilar el proyecto
+      run: msbuild **/*.sln /p:Configuration=Release /p:Platform=x64
+
+    - name: Entregar el archivo final
+      uses: actions/upload-artifact@v4
+      with:
+        name: Servidor-ProjectReboot
+        # Aqui esta la clave: le decimos que atrape el archivo .dll
+        path: x64/Release/*.dll
