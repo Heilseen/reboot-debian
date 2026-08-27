@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Reboot Inyector for Debian/Reboot Inyector for Debian.vcxproj" />
+</Solution>
