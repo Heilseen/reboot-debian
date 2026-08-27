@@ -1,4 +1,4 @@
-name: Fabricar Servidor DLL
+name: Fabricar Inyector EXE
 
 on:
   push:
@@ -12,17 +12,17 @@ jobs:
     steps:
     - name: Descargar el codigo fuente
       uses: actions/checkout@v4
-      with:
-        submodules: recursive
 
     - name: Configurar MSBuild
       uses: microsoft/setup-msbuild@v2
 
-    - name: Compilar el proyecto
-      run: msbuild ProjectReboot.sln /p:Configuration=Release /p:Platform=x64
+    - name: Compilar el Inyector
+      run: |
+        $slnFile = Get-ChildItem -Path . -Filter *.sln* -Recurse | Select-Object -First 1
+        msbuild $slnFile.FullName /p:Configuration=Release /p:Platform=x64
 
     - name: Entregar el archivo final
       uses: actions/upload-artifact@v4
       with:
-        name: Servidor-ProjectReboot
-        path: x64/Release/*.dll
+        name: Inyector-Debian
+        path: "**/x64/Release/*.exe"
