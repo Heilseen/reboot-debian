@@ -1,8 +1,0 @@
-# Ignorar carpetas de compilacion
-x64/
-Release/
-Debug/
-
-# Ignorar archivos ocultos de Visual Studio
-.vs/
-*.user
