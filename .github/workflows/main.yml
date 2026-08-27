@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Descargar el codigo fuente
       uses: actions/checkout@v4
+      with:
+        submodules: recursive # <--- ¡ESTA ES LA LÍNEA MÁGICA NUEVA!
 
     - name: Configurar MSBuild
       uses: microsoft/setup-msbuild@v2
@@ -23,5 +25,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Servidor-ProjectReboot
-        # Aqui esta la clave: le decimos que atrape el archivo .dll
         path: x64/Release/*.dll
