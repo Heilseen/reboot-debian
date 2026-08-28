@@ -16,7 +16,7 @@ int main() {
         
         // 2. Le damos a Wine 2.5 segundos para que cargue la memoria del juego
         std::cout << "[INFO] Game started. Waiting 2.5 seconds for memory to map..." << std::endl;
-        Sleep(2500); 
+        Sleep(15000); 
         
         // 3. Inyectamos
         LPVOID pRemoteBuf = VirtualAllocEx(pi.hProcess, NULL, strlen(dllPath) + 1, MEM_COMMIT, PAGE_READWRITE);
