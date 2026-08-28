@@ -15,8 +15,8 @@ int main() {
     if (CreateProcessA("FortniteClient-Win64-Shipping.exe", cmd, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
         
         // 2. Le damos a Wine 2.5 segundos para que cargue la memoria del juego
-        std::cout << "[INFO] Game started. Waiting 2.5 seconds for memory to map..." << std::endl;
-        Sleep(15000); 
+        std::cout << "[INFO] Game started. Waiting 5 seconds for memory to map..." << std::endl;
+        Sleep(5000); 
         
         // 3. Inyectamos
         LPVOID pRemoteBuf = VirtualAllocEx(pi.hProcess, NULL, strlen(dllPath) + 1, MEM_COMMIT, PAGE_READWRITE);
